@@ -16,6 +16,7 @@ const Auth = ()=>{
 
     firebase.auth().signInWithPhoneNumber(phoneNumber,verifier)
     .then(confirmationResult=>{
+      console.log("confirmationResult",confirmationResult)
       setVerificationId(confirmationResult.verificationId)
       alert(verificationId)
       //logic
