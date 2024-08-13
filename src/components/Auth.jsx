@@ -6,6 +6,7 @@ const Auth = ()=>{
   const [ verificationCode,setVerificationCode] = useState('')
   const [verificationId,setVerificationId] = useState('')
   const recaptchaRef = useRef(null)
+  
   const handleSendOTP = ()=>{
     if(recaptchaRef.current){
       recaptchaRef.current.innerHTML = "<div id='recaptcha-container'></div>"
@@ -30,7 +31,8 @@ const Auth = ()=>{
     const credentials = firebase.auth.PhoneAuthProvider.credential(verificationId,verificationCode)
     firebase.auth().signInWithCredential(credentials)
     .then(userCredentials=>{
-      console.log('user loggend in',userCredentials.user)
+      console.log('user loggend in CRED',userCredentials)
+      // console.log('user loggend in',userCredentials.user)
     })
     .catch(error=>console.log("error in handle otp",error))
   }
